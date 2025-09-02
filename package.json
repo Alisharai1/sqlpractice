@@ -1,0 +1,11 @@
+{
+  "name": "postgres",
+  "version": "1.0.0",
+  "description": "``` docker run -itd -p 5432:5432 -e POSTGRES_USER=alisha -e POSTGRES_PASSWORD=Secret postgres ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
