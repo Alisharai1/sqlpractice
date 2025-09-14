@@ -3,3 +3,4 @@ CREATE TABLE cars (
   model VARCHAR(255),
   year INT
 );
+

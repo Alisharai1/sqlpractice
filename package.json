@@ -1,11 +1,24 @@
 {
-  "name": "postgres",
+  "name": "myfirstpostgres",
   "version": "1.0.0",
-  "description": "``` docker run -itd -p 5432:5432 -e POSTGRES_USER=alisha -e POSTGRES_PASSWORD=Secret postgres ```",
+  "description": "learning postgres with help of Ajay, my husband",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alisharai1/sqlpractice.git"
+  },
+  "keywords": [],
+  "author": "Alisha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alisharai1/sqlpractice/issues"
+  },
+  "homepage": "https://github.com/Alisharai1/sqlpractice#readme",
+  "dependencies": {
+    "db-migrate": "^0.11.14",
+    "db-migrate-pg": "^1.5.2"
+  }
 }

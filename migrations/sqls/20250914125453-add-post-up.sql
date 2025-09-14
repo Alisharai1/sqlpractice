@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS posts(
+    id VARCHAR(256) PRIMARY KEY,
+    description VARCHAR(256) NOT NULL,
+    user_id VARCHAR(256) REFERENCES users(id)
+);
