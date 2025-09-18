@@ -1,5 +1,5 @@
 const db = require('./db')
-
+//importing postgres client
 class UserRepo {
     constructor() {
 
@@ -16,9 +16,10 @@ class UserRepo {
 
     async getUserById(id) {
         try {
-            const data = await db.one('SELECT * FROM users WHERE id=$1;', [id])
-            console.log(data);
-            return data
+            const data = await db.any('SELECT * FROM users WHERE id=$1 limit 1;', [id])
+            if (data && data.length) {
+                return data[0]
+            }
         } catch (error) {
             throw error
         }
@@ -26,9 +27,10 @@ class UserRepo {
 
     async getUserByEmail(email) {
         try {
-            const data = await db.one('SELECT * FROM users WHERE email=$1;', [email])
-            console.log(data);
-            return data
+            const data = await db.any('SELECT * FROM users WHERE email=$1 LIMIT 1;', [email])
+            if (data && data.length) {
+                return data[0]
+            }
         } catch (error) {
             throw error
         }
@@ -55,7 +57,6 @@ class UserRepo {
     async getTotalNoOfUser() {
         try {
             const totalUsers = await db.one('SELECT COUNT(*) AS totalusers FROM users;')
-            console.log(totalUsers);
             return totalUsers
 
         } catch (error) {

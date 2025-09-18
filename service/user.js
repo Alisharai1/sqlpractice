@@ -1,10 +1,7 @@
-const { errors } = require('pg-promise')
+
 const userRepo = require('../repo/user')
 const uuidv4 = require('uuid').v4
 class UserService {
-    constructor() {
-
-    }
 
     async addUser(name, email, age) {
         const id = uuidv4()
@@ -24,6 +21,11 @@ class UserService {
     async getUserById(id) {
         try {
             const user = await userRepo.getUserById(id)
+            // console.log(user);
+            if (!user) {
+                throw new Error("user doesn't exist")
+            }
+
             return user
         } catch (error) {
             throw error
@@ -40,10 +42,7 @@ class UserService {
 
     async deleteUser(id) {
         try {
-            const user = await this.getUserById(id)
-            if (!user) {
-                throw new Error("user id doesn't exist");
-            }
+            await this.getUserById(id)
             await userRepo.deleteUserById(id)
 
         } catch (error) {
@@ -76,3 +75,5 @@ class UserService {
     }
 
 }
+
+module.exports = new UserService();

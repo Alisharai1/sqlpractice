@@ -1,7 +1,7 @@
-const pgp = require('pg-promise')();
-
+const pgpf = require('pg-promise');
+const pgp = pgpf()
 // Option 1: Using connection string
-// const db = pgp('postgres://username:password@localhost:5432/mydatabase');
+// const db = pgp('postgres://alisha:Secret@localhost:5432/alisha');
 
 // Option 2: Using config object
 const db = pgp({
