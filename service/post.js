@@ -70,8 +70,6 @@ class PostService {
 
     async getPostsByDescription(description, page) {
         try {
-
-
             const posts = await postRepo.queryPostsByDescription(description, page)
             return posts
 
