@@ -1,5 +1,12 @@
 const pgpf = require('pg-promise');
-const pgp = pgpf()
+const pgp = pgpf({
+    query(e) {
+        console.log("SQL:", e.query);
+        if (e.params) {
+            console.log("Params:", e.params);
+        }
+    }
+})
 // Option 1: Using connection string
 // const db = pgp('postgres://alisha:Secret@localhost:5432/alisha');
 

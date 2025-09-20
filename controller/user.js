@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
             res.status(400).json({ message: "Email id already exist" })
         }
 
-        res.sendStatus(500)
+        res.status(500)
     }
 })
 
@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
         if (error.message === "user doesn't exist") {
             res.status(404).json({ message: "user doesn't exist" })
         }
-        res.sendStatus(500)
+        res.status(500)
     }
 })
 
@@ -44,7 +44,7 @@ router.patch("/:id", async (req, res) => {
         if (error.message === "user id doesn't exist") {
             res.status(404).json({ message: "user id doesn't exist" })
         }
-        res.sendStatus(500)
+        res.status(500)
 
     }
 })
@@ -53,14 +53,14 @@ router.delete("/:id", async (req, res) => {
     try {
         const { id } = req.params
         await userService.deleteUser(id)
-        res.status(200).json({ message: "successful deletion" })
+        res.status(200).json({ message: "successfully deleted" })
 
     } catch (error) {
         console.log(error);
         if (error.message === "user doesn't exist") {
             res.status(404).json({ message: "user doesn't exist" })
         }
-        res.sendStatus(500)
+        res.status(500)
     }
 })
 

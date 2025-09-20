@@ -1,4 +1,5 @@
 const userRouter = require('./controller/user')
+const postRouter = require('./controller/post')
 const express = require('express')
 const app = express()
 const port = 4000
@@ -11,6 +12,8 @@ app.get('/livecheck', (req, res) => {
 
 app.use('/user', userRouter)
 
+app.use('/post', postRouter)
+
 app.listen(port, (err) => {
     if (err) {
         console.log("error is:", err);
@@ -18,4 +21,6 @@ app.listen(port, (err) => {
 
         console.log(`Facebook app listening on port ${port}`)
     }
+
 })
+
