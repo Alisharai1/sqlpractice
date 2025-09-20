@@ -13,7 +13,7 @@ class PostRepo {
 
     async getPostById(postId) {
         try {
-            const post = await db.any('SELECT * FROM posts WHERE id=$1 LIMIT 1;', [postId])
+            const post = await db.any('SELECT id,description,user_id AS "userId",created_at AS "createdAt",updated_at AS "updatedAt" FROM posts WHERE id=$1 LIMIT 1;', [postId])
             if (post && post.length) {
                 return post[0]
             }
@@ -42,18 +42,18 @@ class PostRepo {
 
     async getPostsByUserId(userId) {
         try {
-            const posts = await db.any('SELECT * FROM posts WHERE user_id=$1;', [userId])
+            const posts = await db.any('SELECT id,description,user_id AS "userId",created_at AS "createdAt",updated_at AS "updatedAt" FROM posts WHERE user_id=$1;', [userId])
             return posts
         } catch (error) {
             throw error
         }
     }
 
-    async queryPostsByDescription(description = "", page=0) {
+    async queryPostsByDescription(description = "", page = 0) {
         try {
-            const limit=5
-            const offset= limit*page
-            const posts = await db.any('SELECT * FROM posts WHERE description LIKE $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3 ;', [`%${description}%`, limit, offset])
+            const limit = 5
+            const offset = limit * page
+            const posts = await db.any('SELECT id,description,user_id AS "userId",created_at AS "createdAt",updated_at AS "updatedAt" FROM posts WHERE description LIKE $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3 ;', [`%${description}%`, limit, offset])
             return posts
 
         } catch (error) {
