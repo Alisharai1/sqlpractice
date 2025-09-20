@@ -14,6 +14,8 @@ app.use('/user', userRouter)
 
 app.use('/post', postRouter)
 
+
+
 app.listen(port, (err) => {
     if (err) {
         console.log("error is:", err);
