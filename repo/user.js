@@ -16,7 +16,7 @@ class UserRepo {
 
     async getUserById(id) {
         try {
-            const data = await db.any('SELECT * FROM users WHERE id=$1 limit 1;', [id])
+            const data = await db.any('SELECT name,age,email,id,created_at AS "createdAt",updated_at AS "updatedAt" FROM users WHERE id=$1 limit 1;', [id])
             if (data && data.length) {
                 return data[0]
             }
@@ -27,7 +27,7 @@ class UserRepo {
 
     async getUserByEmail(email) {
         try {
-            const data = await db.any('SELECT * FROM users WHERE email=$1 LIMIT 1;', [email])
+            const data = await db.any('SELECT name,age,email,id,created_at AS "createdAt",updated_at AS "updatedAt" FROM users WHERE email=$1 LIMIT 1;', [email])
             if (data && data.length) {
                 return data[0]
             }
