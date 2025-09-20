@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
             res.status(404).json({ message: "user not found" })
 
         }
-        res.status(500)
+        res.sendStatus(500)
     }
 
 })
@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
         if (error.message === "post doesn't exist") {
             res.status(404).json({ message: "post not found" })
         }
-        res.status(500)
+        res.sendStatus(500)
     }
 })
 
@@ -46,7 +46,7 @@ router.delete('/:id', async (req, res) => {
         if (error.message === "post doesn't exist") {
             res.status(404).json({ message: "post not found" })
         }
-        res.status(500)
+        res.sendStatus(500)
     }
 
 })
@@ -63,7 +63,7 @@ router.patch('/:id', async (req, res) => {
         if (error.message === "post doesn't exist") {
             res.status(404).json({ message: "post not found" })
         }
-        res.status(500)
+        res.sendStatus(500)
     }
 })
 
@@ -75,7 +75,7 @@ router.get('/', async (req, res) => {
         res.status(200).json(posts)
     } catch (error) {
         console.log(error);
-        res.status(500)
+        res.sendStatus(500)
     }
 })
 
