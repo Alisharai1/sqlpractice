@@ -10,7 +10,7 @@ class LikeRepo {
         }
     }
 
-    async getLikeByPostId(postId) {
+    async getLikesByPostId(postId) {
         try {
             const likes = await db.any('SELECT * FROM likes WHERE post_id = $1;', [postId])
             return likes
@@ -19,7 +19,7 @@ class LikeRepo {
         }
     }
 
-    async getLikeByUserId(userId) {
+    async getLikesByUserId(userId) {
         try {
             const likes = await db.any('SELECT * FROM likes WHERE user_id= $1;', [userId])
             return likes
@@ -30,7 +30,10 @@ class LikeRepo {
 
     async getLikeById(id) {
         try {
-            const like = await db.any('SELECT * FROM likes WHERE id=$1;', [id])
+            const like = await db.any('SELECT * FROM likes WHERE id=$1 LIMIT 1 ;', [id])
+            if (like && like.length) {
+                return like[0]
+            }
             return like
         } catch (error) {
             throw error
@@ -39,7 +42,19 @@ class LikeRepo {
 
     async deleteLike(id) {
         try {
-            await db.any('SELECT * FROM likes WHERE id=$1;', [id])
+            await db.none('DELETE FROM likes WHERE id=$1;', [id])
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getLikeByUserIdAndPostId(userId, postId) {
+        try {
+
+            const like = await db.any('SELECT * FROM likes WHERE user_id= $1 AND post_id=$2 LIMIT 1;', [userId, postId])
+            if (like && like.length) {
+                return like[0]
+            }
         } catch (error) {
             throw error
         }
