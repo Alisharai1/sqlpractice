@@ -44,7 +44,7 @@ class CommentService {
         }
     }
 
-    async deleteCommentById(id) {
+    async deleteComment(id) {
         try {
             await this.getCommentById(id)
             await commentRepo.deleteComment(id)

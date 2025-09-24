@@ -1,5 +1,6 @@
 const userRouter = require('./controller/user')
 const postRouter = require('./controller/post')
+const commentRouter = require('./controller/comment')
 const express = require('express')
 const app = express()
 const port = 4000
@@ -13,6 +14,8 @@ app.get('/livecheck', (req, res) => {
 app.use('/user', userRouter)
 
 app.use('/post', postRouter)
+
+app.use('/comment', commentRouter)
 
 
 
