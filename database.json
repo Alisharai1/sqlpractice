@@ -1,10 +1,10 @@
 {
     "dev": {
         "driver": "pg",
-        "user": "alisha",
-        "password": "Secret",
+        "user": "ajay",
+        "password": "may",
         "host": "localhost",
-        "database": "alisha",
+        "database": "ajay",
         "port": "5432"
     }
 }

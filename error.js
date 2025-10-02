@@ -1,21 +1,17 @@
-function f1() {
-    throw { bb: "Alisha" }
-}
-
-function f2() {
-    try {
-        f1()
-    } catch (error) {
-        throw error
+function person(num) {
+    if (num === 1) {
+        throw new Error("person doesn't exist")
     }
 }
 
-function f3() {
+function employee() {
     try {
-        f2()
+        person(1)
+        throw new Error("person found")
     } catch (error) {
-        console.log(error)
+        console.log(error.message);
+
     }
 }
-f3()
 
+employee()
