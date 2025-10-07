@@ -14,9 +14,9 @@ const pgp = pgpf({
 const db = pgp({
     host: 'localhost',
     port: 5432,
-    database: 'alisha',
-    user: 'alisha',
-    password: 'Secret'
+    database: 'ajay',
+    user: 'ajay',
+    password: 'may'
 });
 
 module.exports = db;
